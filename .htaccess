@@ -1,0 +1,7 @@
+RewriteEngine on 
+Options +FollowSymlinks
+RewriteCond %{HTTP_HOST} !^www\.ummetro\.net [NC]
+RewriteCond %{HTTP_HOST} ^(www\.)?([^\.]+)\.ummetro\.net
+RewriteRule ^([^.*])?$ /index.php?web=%2 [L]
+RewriteRule ^([^.*])?$ /index.php?web=%2&halaman=%3 [L]
+RewriteRule ^([aA-zZ0-9]+)-dir/([^/\.]+)$ index.php?web=$1&halaman=$2 [N]
