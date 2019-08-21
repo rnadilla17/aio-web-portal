@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "netumm_db";
-$password = "masuk123@321";
+$username = "root";
+$password = "";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=netumm_db", $username, $password); 
