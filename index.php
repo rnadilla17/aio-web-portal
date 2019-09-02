@@ -1,12 +1,12 @@
 <?php 
 // VALIDATE CONNECIONS DATABASES
 require_once "application/config/config.php"; 
-$params=isset($_GET['web'])? $_GET['web'] : null; 
+$route=isset($_GET['web'])? $_GET['web'] : null; 
 
-   if(!empty ($params))
+   if(!empty ($route))
     {
     //STANDARD QUERY CHECK PARAMETER
-    $pdo_statement = $conn->prepare("SELECT * FROM fakultas_unit where prefix ='".$params."'  ");
+    $pdo_statement = $conn->prepare("SELECT * FROM fakultas_unit where prefix ='".$route."'  ");
     $pdo_statement->execute();
     $result = $pdo_statement->fetchAll();
     
@@ -16,10 +16,10 @@ $params=isset($_GET['web'])? $_GET['web'] : null;
         foreach ($result as $web) 
         {
            // DEFAULT PARAMETER
-           $params_subdomain=isset($_GET['halaman'])? $_GET['halaman'] : null;
-           // TEMPLATTING CONFIG
-           if(!empty ($params_subdomain)){
-                include find_dir('themes').$web['template']."/".$params_subdomain.".php";
+           $route_subdomain=isset($_GET['halaman'])? $_GET['halaman'] : null;
+           // TEMPLATING CONFIG
+           if(!empty ($route_subdomain)){
+                include find_dir('themes').$web['template']."/".$route_subdomain.".php";
            }
            else {
                 include find_dir('themes').$web['template']."/index.php";
